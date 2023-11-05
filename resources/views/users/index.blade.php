@@ -30,11 +30,16 @@
                         <tbody>
                             @foreach ($users as $user)
                                 <tr class="hover:bg-gray-200">
-                                    <td class="text-center">ícone</td>
+                                    <td class="text-center">
+                                        @if ($user->level == 'admin')
+                                            <i class="fa-solid fa-user-tie"></i>
+                                        @endif
+                                    </td>
                                     <td class="p-2">{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
-                                    <td class="text-center"><a href="">Editar</a></td>
+                                    <td class="text-center"><a href="{{ route('user.edit', $user->id) }}">Editar</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
