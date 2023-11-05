@@ -23,7 +23,10 @@
                                 <th class="p-4">Nome</th>
                                 <th>E-mail</th>
                                 <th>Data de cadastro</th>
-                                <th class="text-center">Ações</th>
+
+                                @can('level')
+                                    <th class="text-center">Ações</th>
+                                @endcan
                             </tr>
                         </thead>
 
@@ -38,8 +41,11 @@
                                     <td class="p-2">{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
-                                    <td class="text-center"><a href="{{ route('user.edit', $user->id) }}">Editar</a>
-                                    </td>
+
+                                    @can('level')
+                                        <td class="text-center"><a href="{{ route('user.edit', $user->id) }}">Editar</a>
+                                        </td>
+                                    @endcan
                                 </tr>
                             @endforeach
                         </tbody>
